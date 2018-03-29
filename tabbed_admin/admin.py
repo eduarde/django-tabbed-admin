@@ -147,6 +147,10 @@ class TabbedModelAdmin(ModelAdmin):
         css = {'all': ()}
         js = []
 
+        if 'grappelli' in settings.INSTALLED_APPS:
+            css['all'] = ("tabbed_admin/css/jquery.ui.tab_admin.hack.css", ) + css['all']
+            media.add_css(css)
+
         if USE_JQUERY_UI:
             css['all'] = (
                 JQUERY_UI_CSS,
